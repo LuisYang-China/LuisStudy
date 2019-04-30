@@ -106,5 +106,3 @@ div{color:red;
         background:yellow;
 }
 ```
-
-
