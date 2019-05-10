@@ -369,4 +369,460 @@ console.log('当前时间为：' + nowTime);
 ### 遍历数组
 ```
 <script>
+    var age = [23,43,64,54,46,17,32];
+    // 数组里最后一个元素的下标就是数组长度-1  age.length - 1
+    // for循环遍历数组,就是查找到里边所有的元素 ,筛选出需要的元素
+    //查到出当前数组中大于30 的数
+    // 通过下标查找 下标长度是数组长度- 1 
+    for(var i = 0;i < length;i ++){
+        if(age(i) > 30){
+            console.log(age[i]); // 43,64,54,46,32
+        }
+    }
+
+    // for...in 也可以实现数组的遍历
+    var key = age.length -1;
+    // key 是数组age的下标
+    for(var key in age){
+        console.log(key); // 0 1 2 3 4 5 6
+        console.log(age[key]); // 跟下标对应的元素值
+    }
+</script>
+```
+***
+### 数组方法
+```
+    // 合并数组 xx.concat() 并不影响原数组
+    var arr1 = [2,3,4];
+    var arr2 = [5,6,7];
+    // 设置一个新的变量接收新合并的值
+    // 操作不影响原数组的时候 需要一个新的变量接收合并完成的数组
+    var arr3 = arr2.concat(arr1);
+    console.log(arr3); // [5,6,7,2,3,4];
+    console.log(arr2); // [5,6,7] 并没有影响原数组
+
+    // 字符串转换成数组
+    // arr.split('分隔符','指定生成数组的长度');
+    var name = '张三,李四,王五,赵六';
+    var name2 = name.split(',',3);
+    console.log(name2); // [张三,李四,王五]
+    var sentence = 'Hello World';
+    var sentence2 = sentence.split('o',2);
+    // 分隔符也可以是字符串的元素
+    console.log(sentence2); // [Hell, W] 以o字母分隔
+
+    // 数组转换成字符串
+    // arr.join('连接符号');参数不写 默认用逗号连接
+    var name3 = ['张三','李四','王五'];
+    var name4 = name3.join('|');
+    console.log(name4); // '张三 | 李四 | 王五'
+
+    // 添加数组元素
+    // push() 从数组最后添加一个元素 改变了原数组
+    var num = [2,3,4];
+    var num5 = num.push(5);
+    console.log(num5); // 4 返回新数组的长度
+    console.log(num); // [2,3,4,5]
+    // unshift() 从数组前面添加一个元素 改变原数组
+    var num6 = num.unshift(7);
+    console.log(num6); // 5 返回新数组的长度
+    console.log(num); // [7,2,3,4,5]
+
+    // 删除数组元素
+    // pop() 从数组最后删除最后一个元素 改变原数组
+    var num1 = [2,3,4,5,6,7];
+    var num2 = num1.pop();
+    console.log(num2); // [7] 返回删除的元素
+    console.log(num1); // [2,3,4,5,6]
+    // shift() 从数组前面删除一个元素 改变原数组
+    var num3 = num1.shift();
+    console.log(num3); // [2] 返回删除的元素
+    console.log(num1);[3,4,5,6]
+</script>
+```
+***
+### 数组求平均值
+```
+<srcipt>
+    var arr = [32,41,1,40,12,5];
+    // 先计算数组元素的和 再获取数组元素个数 求平均值
+    var num = 0;
+    for(var i = 0;i < arr.length;i ++){
+        // 所有数组元素的和
+        sum = sum + arr[i]
+    }
+    console.log(sum); // 数组元素的和
+    // 数组元素的和除以数组的长度(数组元素的个数)
+    var avg = sum / arr.length;
+    console.log(avg); // 平均值
+</srcipt>
+```
+***
+### 冒泡排序
+```
+<script>
+    var arr = [23,45,26,34,47,25,17,32];
+    // for 控制比较几轮 没有第0轮 所以i = 1
+    for(var i = 1;i < arr.lenght;i ++){
+        for(var j = 0;j < arr.length-i;j ++){
+            // 里面的for找到本轮里最大的数
+            // 因为第二轮一经找到了第一轮当中对大的数字
+            // 所以就不用再比较它 所以j < arr.length-i
+            // 对 j 里面的元素作比较
+            // 如果 j 的第一个元素比第二个元素大的时候
+            if(arr[j] > arr[j+1]){
+                // 换位置
+                var temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+        console.log(arr); // 每一次比较的结果
+        // [23,26,34,45,25,17,32,47]
+        // [23,26,34,25,17,32,45,47]
+        // [23,26,25,17,32,34,45,47]
+        // [23,25,17,26,32,34,45,47]
+        // [23,17,25,26,32,34,45,47]
+        // [17,23,25,26,32,34,45,47]
+        // [17,23,25,26,32,34,45,47]
+    }
+    console.log(arr); // 最后排序好的结果
+    // [17,23,25,26,32,34,45,47]
+</script>
+```
+***
+### 圆的周长和面积
+```
+<script>
+    // 圆周率3.1415926 在编程里面用 Math.PI 表示
+    // 圆的周长
+    var r = 4;
+    function zc(r){
+        return 2*Math.PI*r;
+    }
+    console.log(zc(r)); // 圆的周长
+    function area(r){
+        return Math.PI*r*r;
+    }
+    console.log(area(r)); // 圆的面积
+</script>
+```
+***
+### 比较数值
+```
+<script>
+    function getMax(a,b){
+        // 用三元运算符比较
+        return a >= b?a:b;
+    }
+    console.log(getMax(3,4)); // 4
+
+    // 比较多个数值
+    function getMax2(a,b,c){
+        return getMax(getMax(a,b),c);
+    }
+    console.log(getMax2(3,4,5)); // 5
+</script>
+```
+***
+### 求数组当中的最大值和最小值
+```
+<script>
+    var arr = [34,56,23,76,32];
+    function getMax(arr){
+        var maxIndex = 0;
+        for(var i = 1;i < arr.length;i ++){
+            // 当下标为 i 的值大于 maxIndex 的时候
+            // 把值赋给 maxIndex
+            if(arr[maxIndex] < arr[i]){
+                maxIndex = i;
+            }
+        }
+        // 都比较之后剩下的数值就是数组里面最大的值
+        return arr[maxIndex];
+    }
+    console.log(getMax(arr));
+</script>
+```
+***
+### 反转数组
+```
+<script>
+    var arr = ['a','b','c','d','e'];
+    // 最终的值为 ['e','d','c','b','a'];
+    // 可以采用倒叙的方法
+    function reverse(arr){
+        var newArr = [];
+        获取arr的下标
+        for(var i = arr.length-1;i >= 0;i --){
+            // 从后面插入 arr[i] 相对应的值
+            newArr.push(arr[i]);
+        }
+        return newArr
+    }
+    console.log(reverse(arr));
+
+    // 如果长度为6 
+    // 数字的下标可以写成对应的形式 0 5;1 4;2 3
+    // 也就是说 i  arr.length- 1- i
+    function reverse2(arr){
+        for(var i = 0;i < Math.floor(arr.length/2);i ++){
+            // 参考冒泡排序写法
+            var index = arr.length -1 -i
+            var temp = arr[i];
+            arr[i]  = arr[index];
+            arr[index] = temp;
+        }
+        return arr;
+    }
+    console.log(reverse2(arr));
+```
+***
+### 阶乘
+```
+    // 求 5 的阶乘
+    // 5! = 5*4*3*2*1
+    function getFactorial(num){
+        var jc = 1;
+        // num 跟 jc 乘过的结果会返回 jc 然后跟下一个值相乘
+        for(var i = 1;i <= num;i ++){
+            jc = jc * i;
+        }
+        return jc;
+    }
+    console.log(getFactorial(5));
+
+    // 递归思想  解法2
+    // 5! = 4! * 5
+    // 4! = 3! * 4
+    // 3! = 2! * 3 ...
+    function jc(num){
+        // 递归的跳出条件
+        if(num === 1){
+            return 1;
+        }
+        return jc(num - 1)*num;
+    }
+    console.log(num);
+    // 假如 num = 5;
+    // 返回的是 jc(4) * 5
+    // 下轮 jc(4) 执行 返回 jc(3) * 4
+    // 下轮 jc(3) 执行 返回 jc(2) * 3
+    // 下轮 jc(2) 执行 返回 jc(1) * 2
+    // 下轮 jc(1) 执行 返回 1 
+    // jc(4) * 5 ===> 1*2*3*4*5 === 5！
+    // 注意 递归必须有跳出条件
+</script>
+```
+***
+### 求阶乘和
+```
+<script>
+    // 累加相乘的值
+    function jch(num){
+        var sum = 0;
+        for(var i = 1;i <= num;i ++){
+            sum = sum + getFactorial(i);
+        }
+        return sum;
+    }
+    // 算出每次相乘的值
+    function getFactorial(num){
+        var jc = 1;
+        for(var i = 1;i <= num;i ++){
+            jc = jc * i;
+        }
+        return jc;
+    }
+    console.log(jch(5));
+</script>
+```
+***
+### 判断质数
+```
+<script>
+    // 质数只能被它自己或 1 整除
+    function isPrime(num){
+        // 假设 是一个质数
+        var isZhi = true;
+        // 2 是最小的质数
+        for(var i = 2;i < num;i ++){
+            if(num % i === 0){
+                isZhi = false;
+            }
+        }
+        // 三元运算符 辨证一下
+        return isZhi?'是一个质数':'不是一个质数';
+    }
+    console.log(isPrime(6));
+</script>
+```
+***
+### 不死神兔
+```
+<script>
+    // 求斐波那契(宇宙的真理！)数列Fibonacci中的第n个数是多少？  
+    // 有一对兔子，从出生起后第3个月起每个月都生一对兔子，
+    // 小兔子长到第三个月后每个月又生一对兔子，
+    // 假如兔子都不死，问第二十个月的兔子对数为多少？ 不死神兔
+    // 1 1 2 3 5 8 13 21... 
+    // 规律 第三个月开始 下个月兔子数量都等于前两个月之和
+    function fb(n){
+        // 跳出条件
+        if(n === 1||n === 2){
+            return 1;
+        }
+        retuen fb(n - 1)+ fb(n - 2);
+    }  
+    console.log(fb(7));
+</script>
+```
+***
+### 求一年当中的第几天
+```
+<script>
+    // 输入某年某月某日，判断这一天是这一年的第几天？（闰年）
+    // （四年一闰，百年不闰，四百年在闰）
+    // 只有在闰年的时候366天  在2月29天多一天
+    // 其余的时间2月都是28
+    // 1.是否是闰年
+    // 2.每个月多少天
+    // 3.Date提供了一个构造函数 
+    // 可以接受一个yyyy-MM-dd HH:mm:ss类型的字符串 可以转换为date对象
+    var totalDay = 0;
+    var date = new Date('2015-02-28');
+    console.log(date);
+    // 获取年份
+    var year = date.getFullYear();
+    // 获取月份
+    var mouth = date.getMonth()+1;
+    // 获取日
+    var day = date.getDate();
+    var mouthArr = [31,28,31,30,31,30,31,31,30,31,30,31];
+    for(var i = 0;i < mouth -1;i ++){
+        totalDay = totalDay + monthArr[i];
+    }
+    // 加上当月天数
+    totalDay = totalDay + day;
+    // 判读是否为闰年
+    if(isRun(year)&&mouth > 2){
+        totalDay = totalDay + 1;
+    }
+    console.log(totalDay);
+    function isRun(year){
+        if((year % 4 === 0&&year % 100 !== 0)||year % 400 === 0){
+            return true;
+        }
+        return false;
+    }
+</script>
+```
+***
+### 对象
+```
+<script>
+    var obj = {
+        name:'张三',
+        age:'20',
+        say:function(){
+            alert('我是张三')
+        },
+        child:{
+            name:'小明';
+            age:'3',
+        }
+    }
+    // 属性(特征) 方法(行为/动态)
+    // 封装信息
+    // 对象属性值 任意的数据类型 属性是函数 我们称之为对象的方法
+
+    // 调用对象的方法
+    obj.say();
+    // 获取对象属性
+    obj.name;
+
+    // 对象的分类
+    // 内置对象 Date Math Number
+    // 宿主对象 由JS的运行环境提供的对象 目前来讲主要是指由浏览器提供的对象
+    // 如 BOM DOM
+    // 开发者自己定义的对象
+</script>
+```
+***
+### 创建对象
+```
+    // 通过顶级对象Object new
+    var obj = new Object;
+    // 创建了一个空对象
+
+    // 为 obj追加 name属性
+    obj.name = '张三';
+    obj.age = 20;
+    // 修改name属性
+    obj.name = '李四';
+    // 为obj 追加方法
+    obj.say = function(){
+        alert('我是李四');
+    }
+    console.log(obj);
+
+    // 字面量创建
+    var obj = {
+        name:'张三',
+        age:20,
+        say:function(){
+            alert('我是张三');
+        },
+        child:{
+            name:'小明',
+            age:3;
+        },
+    }
+    // 为obj追加属性和方法
+    // 在创建的时候 可以直接指定对象中的属性和方法
+
+    // 自定义构造函数
+    function Person(){
+        // this是一个指针
+        // 构造函数当中的this指向 new出来的示例对象
+        this.name = '张三';
+        this.age = '20';
+        this.child = {
+            name:'小明',
+            age:3,
+        };
+        this.say = function(){
+            alert(this.name);
+        }
+    }
+    var obj3 = new Person;
+    console.log(obj3);
+    obj3.say();
+    // 如果不通过new实例对象 那么this指向调用者
+    // 谁调用this就指向谁
+```
+***
+### JSON对象
+```
+<script>
+    var obj = {
+        a:'Hello',
+        b:'World',
+    };
+    // 这是一个对象
+    var json = '{"a": "Hello","b": "world"}';
+    // 这是一个json字符串 本质是一个字符串 可以进行网络传输
+
+    var movieJson = {
+        "title": "西虹市首富",
+        "directors": "闫非",
+        "year": "2018",
+    }
+    // 这是一个json对象 依然是对象 不能进行网络传输
+    // 向后台传输数据 需要把对象转换为json字符串
+    var movieStr = JSON.stringify(movieJson);
+    // 也可以把普通对象转换成json字符串
+    var str = JSON.stringify(obj);
+
+    var objStr = '{a: "Hello", b: "World"}';
     
