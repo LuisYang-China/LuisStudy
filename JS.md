@@ -823,6 +823,108 @@ console.log('当前时间为：' + nowTime);
     var movieStr = JSON.stringify(movieJson);
     // 也可以把普通对象转换成json字符串
     var str = JSON.stringify(obj);
+```
+***
+### 对象的遍历
+```
+<stript>
+    // for in 用于对象（json对象也可以)的遍历
+    var movieJson = {
+        "title":"西虹市首富",
+        "directors":"闫非",
+        "year":"2018",
+    }
+    // key 指遍历 对象的下标
+    for(var key in movieJson){
+        console.log(key);
+        // key 是变量 所以需要用obj[key]的方式获取对象属性
+        console.log(movieJson[key]);
+        // 非常重要！xx.abc abc是变量的话 就必须通过xx[abc]的方式获取相对应的值
+    }
+```
+***
+### 数组高级API
+```
+<script>
+    // 合并 concat()
+    // 添加 unshift() / push()
+    // 删除 shift() / pop()
 
-    var objStr = '{a: "Hello", b: "World"}';
+    // 数组转换成字符串
+    // arr.toString
+    var num = [2,3,4,5,6];
+    // 把数组转换为字符串 默认用逗号隔开
+    console.log(num.toString);
+
+    // reverse 反转数组
+    num.reverse(); // 会改变原数组 返回改变后的数组
+    console.log(num);
+
+    //给数组排序，返回排序后的数组。如何排序看参数
+    // 无参：按照数组元素的首字符对应的Unicode编码值从小到大排列数组元素。
+    // 带参：必须为函数（回调函数--callback）。函数中带有两个参数，
+    // 代表数组中的前后元素。如果计算后（a-b），返回值为负数，a排b前面。等于0不动
+    // 返回值为正数，a排b后面
+    var num2 = [1,2,34,35,23];
+    num2.sort(); // 改变原数组
+    num2.sort(function(a,b){
+        return a-b;
+    });
+    console.log(num2);
+
+    // indexOf()、lastIndexOf()   //如果没找到返回-1
+    // 返回对应数值在数组中的下标
+    var name = ['张三','李四','王五','马六'];
+    console.log(name.indexOf('李四')); // 1
+    console.log(name.indexOf('马六')); // 3
+    var name = ['张三','李四','王五','王五','马六'];
+    // 从后往前查找对应元素
+    console.log(lastIndexOf('王五')); // 3
+    // 从后往前查找 找到第一个 返回相对应的下标
+    console.log(name.indexOf('小明')); // -1
+    // 如果查找不到 返回-1
+</script>
+```
+***
+### String方法
+```
+<script>
+    var str = 'how are you? im fine.'
+    // 获取字符串长度
+    sonsole.log(str.length); // 21
+    // charAt() 获取相应位置的字符
+    // 空格也占字符长度位置
+    console.log(str.charAt(5)); // r
+    // charCodeAt() 方法可返回指定位置字符的 Unicode 编码
+    console.log(str.charCodeAt(5)); // r 114
+
+    // indexOf() / lastIndexOf()
+    // 返回字符在字符串中的位置
+    // 从前查找
+    console.log(str.indexOf('e')); // 7
+    // 从后查找
+    console.log(str.lastIndexOf('e')); // 20
+
+    // concat() 连接字符串
+    var str2 = 'and you?';
+    console.log(str.concat(str2));
+    // 'how are you? im fine.and you?'
+
+    // slice() 提取字符串的某个部分 并以新的字符串返回被提取的部分
+    console.log(str.slice(0,9)); // how are y
+    console.log(str.slice(0)); // 不写结束值就默认提取整个字符串
+    console.log(str.slice(2,6)); // 'w ar'
+
+    // substr(起始位置,[取的个数]);
+    // 截取字符串 返回截取的字符串
+    console.log(str.substr(0)); // 不写取的个数 截取整个字符串
+    console.log(str.substr(2,6));// w are
+
+    // 转换大小写
+    console.log(str.toUpperCase()); // HOW ARE YOU? IM FINE. // 不会转变原数组
+    sonsole.log(str.toLowerCase()); // how are you? im fine.
+</script>
+```
+
+
     
