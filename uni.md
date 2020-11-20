@@ -3,8 +3,8 @@
 ### h5+app问题
 
 1. 在谷歌浏览器访问后台请求的图片时，如果图片地址时http协议的，谷歌会自动跳转到https协议，造成图片显示异常问题，处理方法如下
-   - <img src="C:\Users\Administrator\Desktop\md\img\1.png" style="zoom: 80%;" />
-   - <img src="C:\Users\Administrator\Desktop\md\img\2.png" style="zoom:75%;" />
+   - ![1](C:\Users\Administrator\Desktop\md\LuisStudy\img\1.png)
+   - ![2](C:\Users\Administrator\Desktop\md\LuisStudy\img\2.png)
 
 ### 小程序问题
 
