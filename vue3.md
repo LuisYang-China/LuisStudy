@@ -2,9 +2,48 @@
 
 ### vue3属性
 
-1. setup() vue3的入口函数，相当于以前的created 和beforecreated生命周期。
+1. setup() 
 
-   其他生命周期函数在setup函数中调用顺序如下：
+   - setup()函数有两个参数，分别是props和context
+
+     - props
+
+       ​	props是setup函数的第一个函数是组件外部传入进来的属性，与vue2.0中的props基本一致
+
+       ```
+       export default {
+         props: {
+           value: {
+             type: String,
+             default: ""
+           }
+         },
+         setup(props) {
+           console.log(props.value)
+         }
+         // 注：在setup中props是不可以使用解构语法的，会造成响应式数值失去响应
+         // 错误写法
+         // setup({value}) {
+         //  console.log(value)
+         // }
+       }
+       ```
+
+     - context是setup的第二个参数，context是一个对象，里面包含三个属性
+
+       - attrs 外部传入的未在props中定义的属性。与vue2.0中this.$attrs一样
+
+         注：attrs也不可以使用解构语法操作
+
+       - slots 组件的插槽，与vue2.0中this.$slots一样
+
+         注：slots也不可结构
+
+       - emit 对外暴露的事件，与vue2.0中this.$emit一样
+
+   - setup也是vue3的入口函数，相当于以前的created 和beforecreated生命周期。
+
+     其他生命周期函数在setup函数中调用顺序如下：
 
    ```js
    <script lang="ts">
@@ -29,7 +68,7 @@
 
    ------
 
-   调用结果如下：
+   ​	调用结果如下：
 
    ```
    vue3
